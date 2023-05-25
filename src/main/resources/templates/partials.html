@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head th:fragment="head">
+    <meta charset="UTF-8"/>
+    <link rel="stylesheet" th:href="@{/css/resets.css}">
+    <link rel="stylesheet" th:href="@{/css/layout.css}">
+    <link rel="stylesheet" th:href="@{/css/navbar-style.css}">
+</head>
+<body>
+<nav th:fragment="navbar">
+    <div class="nav-list">
+        <ul>
+            <li><a href="/home">Home</a></li>
+            <li><a href="/join">Cohort</a></li>
+            <li><a href="/roll-dice">Dice</a></li>
+            <li class="dropdown">
+                <a href="javascript:void(0)" class="dropbtn">Posts</a>
+                <div class="dropdown-content">
+                    <a href="/posts">Index</a>
+                    <a href="/posts/show">View Posts</a>
+                    <a href="/posts/create">Create Post</a>
+                    <a href="#">Link 3</a>
+                </div>
+        </ul>
+    </div>
+</nav>
+
+</body>
+</html>

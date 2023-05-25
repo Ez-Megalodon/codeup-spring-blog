@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="partials :: head">
+    <title>Roll the Dice!</title>
+</head>
+<body>
+<nav th:replace="partials :: navbar"></nav>
+<div class="page-wrapper">
+    <div class="container grow">
+        <div class="row justify-center">
+            <div class="column text-center">
+                <h1>Guess the number between 1 & 6</h1>
+                <p>(select a number below)</p>
+            </div>
+        </div>
+        <div class="row justify-center">
+            <div class="column gap-20 flex-direction-row justify-center">
+                <a href="/roll-dice/1">1</a>
+                <a href="/roll-dice/2">2</a>
+                <a href="/roll-dice/3">3</a>
+                <a href="/roll-dice/4">4</a>
+                <a href="/roll-dice/5">5</a>
+                <a href="/roll-dice/6">6</a>
+            </div>
+        </div>
+        <div class="row justify-center">
+            <div class="column shrink justify-center" th:if="${n != null}">
+                <p>User guess: <span th:text="${n}"></span></p>
+                <p>Random Number: <span th:text="${randomNum}"></span></p>
+                <div th:if="${n != randomNum}">
+                    <p>You guessed wrong!</p>
+                </div>
+                <div th:if="${n == randomNum}">
+                    <p>You guessed right!</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+</body>
+</html>

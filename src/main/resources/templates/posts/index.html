@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="partials :: head">
+    <meta charset="UTF-8">
+    <title>Posts Index</title>
+</head>
+<body>
+<nav th:replace="partials :: navbar"></nav>
+<div class="page-wrapper">
+    <div class="container">
+        <div class="row justify-center">
+
+            <div class="column shrink">
+                <h1>Posts</h1>
+            </div>
+        </div>
+
+        <div class="row justify-center">
+            <div class="column shrink">
+                <a href="/posts/show">View Posts</a>
+            </div>
+        </div>
+
+        <div class="row justify-center">
+            <div class="column shrink">
+                <a href="/posts/create">Create Post</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

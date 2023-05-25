@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="partials :: head">
+    <meta charset="UTF-8">
+    <title>Show</title>
+</head>
+<body>
+<nav th:replace="partials :: navbar"></nav>
+<div class="page-wrapper">
+    <div class="container">
+        <div class="row justify-center">
+                <div th:each="post : ${postList}" class="column">
+                    <h2 th:text="${post.title}"></h2>
+                    <p th:text="${post.body}"></p>
+                </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

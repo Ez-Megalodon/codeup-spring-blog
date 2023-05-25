@@ -1,34 +1,49 @@
 package com.codeup.codeupspringblog.controllers;
 
+import com.codeup.codeupspringblog.models.Post;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.ArrayList;
 
 @Controller
 public class PostController {
 
     @GetMapping("/posts")
-    @ResponseBody
     public String postsIndex(){
-        return "posts index page";
+        return "/posts/index";
     }
 
+    @GetMapping("/posts/show")
+    public String showPost(Model model){
+        ArrayList<Post> postList = new ArrayList<>();
+        Post newPost1 = new Post("title 1", "body 1");
+        Post newPost2 = new Post("title 2", "body 2");
+        postList.add(newPost1);
+        postList.add(newPost2);
+        model.addAttribute("postList", postList);
+        return "/posts/show";
+    }
 
     @GetMapping("/posts/{id}")
-    @ResponseBody
     public String userPostById(@PathVariable Integer id){
-        return "view an individual post id: " + id;
+        ArrayList<Post> postList = new ArrayList<>();
+        Post newPost1 = new Post("title 1", "body 1");
+        postList.add(newPost1);
+        return "/posts/show";
     }
 
     @GetMapping(path = "/posts/create")
-    @ResponseBody
     public String viewPosts(){
-        return "view post form";
+        return "posts/create";
     }
 
-    @RequestMapping(path = "/posts/create", method = RequestMethod.POST)
-    @ResponseBody
-    public String createPosts(){
-        return "create a new post";
+    @PostMapping("/posts/create")
+    public String createPosts(@RequestParam("title") String title, @RequestParam("body") String body, Model model){
+        Post newPost1 = new Post(title, body);
+        model.addAttribute("addedPost", newPost1);
+        return "posts/show";
     }
 }
 

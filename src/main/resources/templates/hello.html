@@ -2,10 +2,11 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head th:replace="partials :: head">
     <meta charset="UTF-8">
-    <title>Home</title>
+    <title>Hello</title>
 </head>
 <body>
 <nav th:replace="partials :: navbar"></nav>
-<h1>This is the home page</h1>
+  <h1>Hello, <span th:text="${name}">World</span>!</h1>
+
 </body>
 </html>
