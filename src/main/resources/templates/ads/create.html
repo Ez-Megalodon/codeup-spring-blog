@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="partials :: head">
+    <meta charset="UTF-8">
+    <title>Show</title>
+</head>
+<body>
+<nav th:replace="partials :: navbar"></nav>
+<div class="page-wrapper">
+    <div class="container">
+        <div class="row justify-center">
+            <div class="column shrink">
+                <h1>Create an ad</h1>
+            </div>
+        </div>
+
+        <div class="row justify-center">
+            <div class="column shrink">
+                <form action="/ads/create" method="post">
+                    <label for="title">Title:</label>
+                    <input type="text" name="title" id="title">
+                    <br>
+                    <label for="body">Description</label>
+                    <textarea name="body" id="body"></textarea>
+                    <br>
+                    <button type="submit">Submit</button>
+                </form>
+            </div>
+        </div>
+
+    </div>
+</div>
+</body>
+</html>

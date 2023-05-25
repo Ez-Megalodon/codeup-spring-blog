@@ -2,23 +2,24 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head th:replace="partials :: head">
     <meta charset="UTF-8">
-    <title>Show</title>
+    <title>test</title>
 </head>
 <body>
 <nav th:replace="partials :: navbar"></nav>
+
 <div class="page-wrapper">
     <div class="container">
         <div class="row justify-center">
-            <div class="column justify-center">
-                <h1>Here are all the Posts</h1>
+            <div class="column justify-center text-center shrink">
+                <h1>Here are all the Ads</h1>
             </div>
         </div>
         <div class="row justify-center">
             <div class="column justify-center">
                 <ul>
-                    <li th:each="post : ${posts}" class="column">
-                        <h2 th:text="${post.title}"></h2>
-                        <p th:text="${post.body}"></p>
+                    <li th:each="ad : ${ads}" class="column">
+                        <h2 th:text="${ad.title}"></h2>
+                        <p th:text="${ad.description}"></p>
                     </li>
                 </ul>
             </div>
