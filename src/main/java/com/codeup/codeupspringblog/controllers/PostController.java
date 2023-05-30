@@ -54,7 +54,6 @@ public class PostController {
         return "redirect:/posts/show";
     }
 
-
     @PostMapping("/posts/search")
     public String searchResults(@RequestParam("post-search") String title, Model model) {
         model.addAttribute("posts", postsDao.searchByTitleLike(title));
@@ -64,9 +63,9 @@ public class PostController {
     @GetMapping("/posts/post_page")
     public String postPage(@RequestParam("postId") Long id, Model model) {
         model.addAttribute("post", postsDao.findPostById(id));
-        System.out.println("found title:");
-        System.out.println(postsDao.findPostById(id).getTitle());
         return "/posts/post_page";
     }
+
+
 }
 
