@@ -1,10 +1,11 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head th:fragment="head">
     <meta charset="UTF-8"/>
     <link rel="stylesheet" th:href="@{/css/resets.css}">
     <link rel="stylesheet" th:href="@{/css/layout.css}">
     <link rel="stylesheet" th:href="@{/css/navbar-style.css}">
+    <link rel="stylesheet" th:href="@{/css/style.css}">
 </head>
 <body>
 <nav th:fragment="navbar">
@@ -29,6 +30,13 @@
                     <a href="#">Link 3</a>
                 </div>
         </ul>
+        <div class="column shrink" style="float: right">
+            <form action="/posts/search" method="post">
+                <label for="post-search" style="color: white">Search Posts:</label>
+                <input type="text" name="post-search" id="post-search">
+                <button type="submit">Search</button>
+            </form>
+        </div>
     </div>
 </nav>
 

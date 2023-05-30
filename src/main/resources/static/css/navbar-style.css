@@ -1,4 +1,6 @@
 .nav-list {
+    justify-content: space-evenly;
+    align-items: center;
     display: flex;
     background-color: darkslategray;
 }
