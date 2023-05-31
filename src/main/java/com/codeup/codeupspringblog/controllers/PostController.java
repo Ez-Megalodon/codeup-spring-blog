@@ -2,19 +2,20 @@ package com.codeup.codeupspringblog.controllers;
 
 import com.codeup.codeupspringblog.models.Post;
 import com.codeup.codeupspringblog.repositories.PostRepository;
+import com.codeup.codeupspringblog.repositories.UserRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 @Controller
 public class PostController {
 
     private final PostRepository postsDao;
+    private final UserRepository usersDao;
 
-    public PostController(PostRepository adsDao) {
+    public PostController(PostRepository adsDao, UserRepository usersDao) {
         this.postsDao = adsDao;
+        this.usersDao = usersDao;
     }
 
     @GetMapping("/posts")
@@ -37,7 +38,7 @@ public class PostController {
     @PostMapping("/posts/create")
     public String postAdForm(@RequestParam(name = "title") String title, @RequestParam(name = "body") String body) {
 
-        Post post = new Post(title, body);
+        Post post = new Post(title, body, usersDao.findUserById(1L));
         postsDao.save(post);
         return "redirect:/posts/show";
     }

@@ -24,12 +24,12 @@ public class AdController {
     }
 
     @GetMapping("/ads/create")
-    public String createAdForm(){
+    public String createAdForm() {
         return "ads/create";
     }
 
     @PostMapping("/ads/create")
-    public String postAdForm(@RequestParam(name = "title")String title, @RequestParam(name = "body") String body){
+    public String postAdForm(@RequestParam(name = "title") String title, @RequestParam(name = "body") String body) {
         Ad ad = new Ad(title, body);
         adsDao.save(ad);
         return "redirect:/ads";

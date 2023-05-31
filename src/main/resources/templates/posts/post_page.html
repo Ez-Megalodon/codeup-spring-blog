@@ -12,6 +12,7 @@
             <div class="column">
                 <h1 th:text="${post.getTitle()}"></h1>
                 <p th:text="${post.getBody()}"></p>
+                <p>Created by <span th:text="${post.getUser().getEmail()}">default</span></p>
                 <button type="button" class="post-edit-btn-detailed" id="post-edit-btn">Edit</button>
             </div>
             <div id="myModal" class="modal">
