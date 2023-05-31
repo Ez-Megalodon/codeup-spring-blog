@@ -21,7 +21,11 @@ public class UserController {
     }
 
     @PostMapping("/register")
-    public String registerUser(@RequestParam("username") String username, @RequestParam("password") String password, @RequestParam("passwordConfirm") String passwordConfirm, @RequestParam("email") String email) {
+    public String registerUser(
+            @RequestParam("username") String username,
+            @RequestParam("password") String password,
+            @RequestParam("passwordConfirm") String passwordConfirm,
+            @RequestParam("email") String email) {
         if (password.equals(passwordConfirm)) {
             User newUser = new User(username, password, email);
             usersDao.save(newUser);

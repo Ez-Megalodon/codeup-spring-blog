@@ -36,7 +36,9 @@ public class PostController {
     }
 
     @PostMapping("/posts/create")
-    public String postAdForm(@RequestParam(name = "title") String title, @RequestParam(name = "body") String body) {
+    public String postAdForm(
+            @RequestParam(name = "title") String title,
+            @RequestParam(name = "body") String body) {
 
         Post post = new Post(title, body, usersDao.findUserById(1L));
         postsDao.save(post);
@@ -44,7 +46,11 @@ public class PostController {
     }
 
     @PostMapping("/posts/edit")
-    public String editAdForm(@RequestParam("post-id") Long id, @RequestParam(name = "title") String title, @RequestParam(name = "body") String body) {
+    public String editAdForm(
+            @RequestParam("post-id") Long id,
+            @RequestParam(name = "title") String title,
+            @RequestParam(name = "body") String body) {
+
         Post findPost = postsDao.findPostById(id);
         if (findPost != null) {
             postsDao.setPostById(id, title, body);
@@ -56,13 +62,15 @@ public class PostController {
     }
 
     @PostMapping("/posts/search")
-    public String searchResults(@RequestParam("post-search") String title, Model model) {
+    public String searchResults(
+            @RequestParam("post-search") String title, Model model) {
         model.addAttribute("posts", postsDao.searchByTitleLike(title));
         return "posts/search";
     }
 
     @GetMapping("/posts/post_page")
-    public String postPage(@RequestParam("postId") Long id, Model model) {
+    public String postPage(
+            @RequestParam("postId") Long id, Model model) {
         model.addAttribute("post", postsDao.findPostById(id));
         return "/posts/post_page";
     }
