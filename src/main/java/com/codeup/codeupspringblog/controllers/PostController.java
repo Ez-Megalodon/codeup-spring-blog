@@ -31,16 +31,14 @@ public class PostController {
     }
 
     @GetMapping("/posts/create")
-    public String createAdForm() {
+    public String createAdForm(Model model) {
+        model.addAttribute("post", new Post());
         return "posts/create";
     }
 
     @PostMapping("/posts/create")
-    public String postAdForm(
-            @RequestParam(name = "title") String title,
-            @RequestParam(name = "body") String body) {
-
-        Post post = new Post(title, body, usersDao.findUserById(1L));
+    public String postAdForm(@ModelAttribute Post post) {
+        post.setUser(usersDao.findUserById(1L));
         postsDao.save(post);
         return "redirect:/posts/show";
     }
@@ -68,13 +66,18 @@ public class PostController {
         return "posts/search";
     }
 
-    @GetMapping("/posts/post_page")
+    @GetMapping("/posts/{id}")
     public String postPage(
-            @RequestParam("postId") Long id, Model model) {
+            @PathVariable("id") Long id, Model model) {
         model.addAttribute("post", postsDao.findPostById(id));
         return "/posts/post_page";
     }
 
-
+    @PostMapping("/posts/delete")
+    public String deletePostById (@RequestParam("postDelete")Long id){
+        System.out.println("deleting post id:" + id);
+        postsDao.deleteById(id);
+        return "/posts/index";
+    }
 }
 

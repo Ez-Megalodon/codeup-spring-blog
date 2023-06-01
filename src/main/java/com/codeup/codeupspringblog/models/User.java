@@ -1,14 +1,13 @@
 package com.codeup.codeupspringblog.models;
 
 import jakarta.persistence.*;
-import org.springframework.stereotype.Controller;
-
 import java.util.List;
 
 
 @Entity
 @Table(name = "users")
 public class User {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -22,6 +21,7 @@ public class User {
     @Column(length = 50, nullable = false, unique = true)
     private String email;
 
+//    user to post foreign key
     @OneToMany(cascade = CascadeType.PERSIST, mappedBy = "user")
     private List<Post> posts;
 

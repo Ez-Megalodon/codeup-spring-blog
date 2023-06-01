@@ -9,8 +9,8 @@
 <div class="page-wrapper">
     <div class="container">
         <div class="row justify-center">
-            <div class="column justify-center">
-                <h1>Here are all the Posts</h1>
+            <div class="column justify-center text-center">
+                <h1 style="text-decoration: underline">Here are all the Posts</h1>
             </div>
         </div>
         <div class="row justify-center">
@@ -19,13 +19,14 @@
                     <li th:each="post : ${posts}" class="column post-box shrink">
                         <div th:text="${post.getId()}" style="display: none"></div>
                         <div class="column shrink">
-                            <a th:href="@{/posts/post_page(postId=${post.id})}">
+                            <a class="title-link" th:href="@{|/posts/${post.id}|}">
                                 <h2 th:text="${post.title}"></h2>
                             </a>
                         </div>
-                        <div class="column shrink"><p th:text="${post.body}"></p></div>
-                        <button type="button" class="post-edit-btn" id="post-edit-btn">Edit</button>
-
+                        <!--<div class="column shrink"><p th:text="${post.body}"></p></div>-->
+                        <div class="column shrink">
+                            <button type="button" class="post-edit-btn" id="post-edit-btn">Edit</button>
+                        </div>
                         <div id="myModal" class="modal">
                             <div class="modal-content">
                                 <span class="close">&times;</span>

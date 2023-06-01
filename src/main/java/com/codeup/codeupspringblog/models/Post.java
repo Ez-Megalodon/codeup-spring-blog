@@ -2,6 +2,8 @@ package com.codeup.codeupspringblog.models;
 
 import jakarta.persistence.*;
 
+import java.util.List;
+
 @Entity
 @Table(name = "posts")
 public class Post {
@@ -15,6 +17,7 @@ public class Post {
     @Column(nullable = false)
     private String body;
 
+//  post id foreign key
     @ManyToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "user_id")
     private User user;

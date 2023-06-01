@@ -19,7 +19,8 @@ public interface PostRepository extends JpaRepository<Post, Long> {
     @Query("update Post p set p.title = :title, p.body = :body where p.id = :id")
     int setPostById(@Param("id") Long id, @Param("title")String title, @Param("body")String body);
 
-    // a named parameter in an HQL (Hibernate Query Language) query
     @Query("from Post a where a.title like %:term%")
     List<Post> searchByTitleLike(@Param("term") String term);
+
+
 }
