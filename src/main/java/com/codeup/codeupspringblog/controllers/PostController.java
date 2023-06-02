@@ -47,7 +47,7 @@ public class PostController {
     public String postAdForm(@ModelAttribute Post post) {
         post.setUser(usersDao.findUserById(1L));
         postsDao.save(post);
-        emailService.prepareAndSend(post, "A new Post has been Posted!", "The body of the email! " + "\n" + post.getTitle() +"\n" + post.getBody());
+        emailService.prepareAndSend(post, "A new Post has been Posted!", "The body of the email! " + "\n" + post.getTitle() + "\n" + post.getBody());
         return "redirect:/posts/show";
     }
 
@@ -92,7 +92,7 @@ public class PostController {
     }
 
     @PostMapping("/posts/addComment")
-    public String addComment(@RequestParam("postId") Long id, @RequestParam("commentContent") String commentContent){
+    public String addComment(@RequestParam("postId") Long id, @RequestParam("commentContent") String commentContent) {
         Comment newComment = new Comment(commentContent, postsDao.findPostById(id));
         commentsDao.save(newComment);
         return "redirect:/posts/" + id;
