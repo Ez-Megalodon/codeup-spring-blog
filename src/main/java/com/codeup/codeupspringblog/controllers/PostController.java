@@ -1,6 +1,8 @@
 package com.codeup.codeupspringblog.controllers;
 
+import com.codeup.codeupspringblog.models.Comment;
 import com.codeup.codeupspringblog.models.Post;
+import com.codeup.codeupspringblog.repositories.CommentRepository;
 import com.codeup.codeupspringblog.repositories.PostRepository;
 import com.codeup.codeupspringblog.repositories.UserRepository;
 import com.codeup.codeupspringblog.services.EmailService;
@@ -12,11 +14,13 @@ import org.springframework.web.bind.annotation.*;
 public class PostController {
     private final PostRepository postsDao;
     private final UserRepository usersDao;
+    private final CommentRepository commentsDao;
     private final EmailService emailService;
 
-    public PostController(PostRepository adsDao, UserRepository usersDao, EmailService emailService) {
+    public PostController(PostRepository adsDao, UserRepository usersDao, CommentRepository commentsDao, EmailService emailService) {
         this.postsDao = adsDao;
         this.usersDao = usersDao;
+        this.commentsDao = commentsDao;
         this.emailService = emailService;
 
     }
@@ -75,6 +79,7 @@ public class PostController {
     @GetMapping("/posts/{id}")
     public String postPage(
             @PathVariable("id") Long id, Model model) {
+        model.addAttribute("comments", commentsDao.findAllByPostId(id));
         model.addAttribute("post", postsDao.findPostById(id));
         return "/posts/post_page";
     }
@@ -84,6 +89,13 @@ public class PostController {
         System.out.println("deleting post id:" + id);
         postsDao.deleteById(id);
         return "/posts/index";
+    }
+
+    @PostMapping("/posts/addComment")
+    public String addComment(@RequestParam("postId") Long id, @RequestParam("commentContent") String commentContent){
+        Comment newComment = new Comment(commentContent, postsDao.findPostById(id));
+        commentsDao.save(newComment);
+        return "redirect:/posts/" + id;
     }
 }
 

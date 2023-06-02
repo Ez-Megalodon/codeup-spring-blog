@@ -75,35 +75,35 @@
                 </div>
             </div>
         </div>
-        <!--        <div class="row">-->
-        <!--            <div class="column text-center">-->
-        <!--                <h2>Comments</h2>-->
-        <!--            </div>-->
-        <!--        </div>-->
-        <!--        <div class="row justify-center align-center">-->
-        <!--            <div class="column flex-direction-row shrink">-->
-        <!--                <div class="column create-comment">-->
-        <!--                    <form class="column shrink" action="/posts/comment" method="post">-->
-        <!--                        <div class="column shrink">-->
-        <!--                            <label for="commentBody">Add comment:</label>-->
-        <!--                        </div>-->
-        <!--                        <div class="column shrink">-->
-        <!--                            <input  type="hidden" name="postId" th:value="${post.id}">-->
-        <!--                            <textarea name="commentBody" id="commentBody" cols="100" rows="6"></textarea>-->
-        <!--                        </div>-->
-        <!--                        <div class="column shrink justify-center align-center" style="margin-top: 10px">-->
-        <!--                            <button type="submit">Add comment</button>-->
-        <!--                        </div>-->
-        <!--                    </form>-->
-        <!--                </div>-->
-        <!--            </div>-->
-        <!--        </div>-->
-        <!--        <div class="row flex-direction-column">-->
-        <!--            <div class="column flex-direction-column" th:each="comment : ${comments}">-->
-        <!--                <p style="text-decoration: underline; font-weight: bold"><span th:text="${comment.getUser().getEmail()}"></span> says:</p>-->
-        <!--                <p th:text="${comment.body}"></p>-->
-        <!--            </div>-->
-        <!--        </div>-->
+                <div class="row">
+                    <div class="column text-center">
+                        <h2>Comments</h2>
+                    </div>
+                </div>
+                <div class="row justify-center align-center">
+                    <div class="column flex-direction-row shrink">
+                        <div class="column create-comment">
+                            <form class="column shrink" action="/posts/addComment" method="post">
+                                <div class="column shrink">
+                                    <label for="commentContent">Add comment:</label>
+                                </div>
+                                <div class="column shrink">
+                                    <input  type="hidden" name="postId" th:value="${post.id}">
+                                    <textarea name="commentContent" id="commentContent" cols="100" rows="6"></textarea>
+                                </div>
+                                <div class="column shrink justify-center align-center" style="margin-top: 10px">
+                                    <button type="submit">Add comment</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="row flex-direction-column">
+                    <div class="column flex-direction-column" th:each="comment : ${comments}">
+                        <p style="text-decoration: underline; font-weight: bold"><span th:text="${comment.post.user.getEmail()}"></span> says:</p>
+                        <p th:text="${comment.content}"></p>
+                    </div>
+                </div>
     </div>
 </div>
 <script th:src="@{/js/js-main.js}"></script>
