@@ -37,7 +37,7 @@ public class Ad {
         this.description = description;
     }
 
-    public Ad(){
+    public Ad() {
     }
 
     public void setId(Long id) {

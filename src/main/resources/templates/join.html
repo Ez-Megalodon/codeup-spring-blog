@@ -2,18 +2,18 @@
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head th:replace="~{partials :: head}">
 
-  <meta charset="UTF-8" />
-  <title>Join</title>
+    <meta charset="UTF-8"/>
+    <title>Join</title>
 </head>
 <body>
 <nav th:replace="~{partials :: navbar}"></nav>
-  <h1 th:text="${cohort}"></h1>
+<h1 th:text="${cohort}"></h1>
 
-  <form action="/join" method="post">
+<form action="/join" method="post">
     <label for="cohort-ip">Cohort</label>
-    <input type="text" name="cohort" id="cohort-ip" class="field" />
-    <button type="submit" >Join now</button>
-  </form>
+    <input type="text" name="cohort" id="cohort-ip" class="field"/>
+    <button type="submit">Join now</button>
+</form>
 
 </body>
 </html>

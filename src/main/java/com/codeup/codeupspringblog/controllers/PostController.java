@@ -3,19 +3,22 @@ package com.codeup.codeupspringblog.controllers;
 import com.codeup.codeupspringblog.models.Post;
 import com.codeup.codeupspringblog.repositories.PostRepository;
 import com.codeup.codeupspringblog.repositories.UserRepository;
+import com.codeup.codeupspringblog.services.EmailService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 @Controller
 public class PostController {
-
     private final PostRepository postsDao;
     private final UserRepository usersDao;
+    private final EmailService emailService;
 
-    public PostController(PostRepository adsDao, UserRepository usersDao) {
+    public PostController(PostRepository adsDao, UserRepository usersDao, EmailService emailService) {
         this.postsDao = adsDao;
         this.usersDao = usersDao;
+        this.emailService = emailService;
+
     }
 
     @GetMapping("/posts")
@@ -40,6 +43,7 @@ public class PostController {
     public String postAdForm(@ModelAttribute Post post) {
         post.setUser(usersDao.findUserById(1L));
         postsDao.save(post);
+        emailService.prepareAndSend(post, "A new Post has been Posted!", "The body of the email! " + "\n" + post.getTitle() +"\n" + post.getBody());
         return "redirect:/posts/show";
     }
 
@@ -50,13 +54,15 @@ public class PostController {
             @RequestParam(name = "body") String body) {
 
         Post findPost = postsDao.findPostById(id);
+
         if (findPost != null) {
             postsDao.setPostById(id, title, body);
         } else {
             Post post = new Post(title, body);
             postsDao.save(post);
         }
-        return "redirect:/posts/show";
+
+        return "redirect:/posts/" + id;
     }
 
     @PostMapping("/posts/search")
@@ -74,7 +80,7 @@ public class PostController {
     }
 
     @PostMapping("/posts/delete")
-    public String deletePostById (@RequestParam("postDelete")Long id){
+    public String deletePostById(@RequestParam("postDelete") Long id) {
         System.out.println("deleting post id:" + id);
         postsDao.deleteById(id);
         return "/posts/index";

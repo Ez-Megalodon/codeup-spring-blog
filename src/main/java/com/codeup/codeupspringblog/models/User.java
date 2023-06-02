@@ -1,6 +1,7 @@
 package com.codeup.codeupspringblog.models;
 
 import jakarta.persistence.*;
+
 import java.util.List;
 
 
@@ -21,7 +22,7 @@ public class User {
     @Column(length = 50, nullable = false, unique = true)
     private String email;
 
-//    user to post foreign key
+    //    user to post foreign key
     @OneToMany(cascade = CascadeType.PERSIST, mappedBy = "user")
     private List<Post> posts;
 

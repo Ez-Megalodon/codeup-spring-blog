@@ -5,7 +5,7 @@
 */
 .page-wrapper {
     min-height: 100vh;
-    display:flex;
+    display: flex;
     flex-direction: column;
 }
 
@@ -22,19 +22,24 @@
     align-items: center;
     row-gap: 20px;
 }
+
 /* Combo classes to extend the container's versatility */
 .container.grow {
     flex: 1 0 0;
 }
+
 .container.justify-center {
     justify-content: center;
 }
+
 .container.justify-center.main {
     min-height: 80vh;
 }
+
 .container.justify-bottom {
     justify-content: end;
 }
+
 .container.justify-right {
     align-content: end;
 }
@@ -52,37 +57,48 @@
     padding: 0 20px;
     gap: 20px;
 }
+
 /* Combo classes to extend the row's versatility */
 .row.shrink {
     flex: 0 1 auto;
 }
+
 .row.full-width {
     max-width: unset;
 }
+
 .row.align-center {
     align-items: center;
 }
+
 .row.align-top {
     align-items: start;
 }
+
 .row.align-bottom {
     align-items: end;
 }
+
 .row.justify-center {
     justify-content: center;
 }
+
 .row.justify-right {
     justify-content: end;
 }
+
 .row.justify-space-between {
     justify-content: space-between;
 }
+
 .row.no-padding {
     padding: unset;
 }
+
 .row.no-gap {
     gap: unset;
 }
+
 .row.grow {
     flex: 1 0 auto;
 }
@@ -98,55 +114,88 @@
     flex-direction: column;
     flex: 1 0 0;
 }
+
 /* Combo classes to extend the column's versatility */
 .column.shrink {
     flex: 0 1 auto;
 }
+
 .column.text-center {
     text-align: center;
 }
+
 .column.align-center {
     align-items: center;
 }
+
 .column.align-right {
     align-items: end;
 }
+
 .column.justify-center {
     justify-content: center;
 }
+
 .column.justify-bottom {
     justify-content: end;
 }
+
 .column.justify-space-between {
     justify-content: space-between;
 }
+
 .gap-10 {
     gap: 10px;
 }
+
 .gap-20 {
     gap: 20px;
 }
+
 .padding-10 {
     padding: 10px;
 }
+
 .padding-20 {
     padding: 20px;
 }
+
 .display-flex {
     display: flex;
 }
+
 .flex-wrap {
     flex-wrap: wrap;
 }
+
 .flex-wrap-reverse {
     flex-wrap: wrap-reverse;
 }
+
 .flex-direction-row {
     flex-direction: row;
 }
+
 .flex-direction-column {
     flex-direction: column;
 }
+
 .justify-center {
     justify-content: center;
+}
+
+.margin-top-10 {
+    margin-top: 10px;
+}
+
+.margin-bottom-10 {
+    margin-bottom: 10px;
+}
+
+.margin-top-20 {
+    margin-top: 20px;
+}
+
+.margin-bottom-20 {
+    margin-bottom: 20px;
 }
